@@ -1,0 +1,57 @@
+<aura:component controller="BoatReviews">
+	<aura:handler name="init" value="{! this }" action="{! c.doInit }" />
+	<aura:handler name="change" value="{! v.boat }" action="{! c.doInit }" />
+
+	<aura:attribute name="boat" type="Boat__c" />
+	<aura:attribute name="boatReviews" type="BoatReview__c[]" access="PRIVATE" />
+
+	<aura:method name="refresh" action="{! c.doInit }" />
+
+	<lightning:navigation aura:id="navService" />
+
+	<ui:scrollerWrapper class="slds-feed feedDiv">
+		<aura:if isTrue="{! not(empty(v.boatReviews)) }">
+			<ul class="slds-feed__list">
+				<aura:iteration items="{! v.boatReviews }" var="boatReview">
+					<li class="slds-post">
+						<header class="slds-post__header slds-media">
+							<div class="slds-media__figure">
+								<p class="slds-avatar slds-avatar_circle slds-avatar_small">
+									<img alt="{! boatReview.CreatedBy.Name }"
+										src="{! boatReview.CreatedBy.SmallPhotoUrl }"
+										title="{! boatReview.CreatedBy.Name + '\'s avatar' }" />
+								</p>
+							</div>
+							<div class="slds-media__body">
+								<div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
+									<p>
+										<a href="javascript:void(0);" data-userid="{! boatReview.CreatedById }" title="{! boatReview.CreatedBy.Name }" onclick="{! c.onUserInfoClick }">
+											{! boatReview.CreatedBy.Name }
+										</a>
+										<aura:if isTrue="{! boatReview.CreatedBy.CompanyName }"> — {! boatReview.CreatedBy.CompanyName }</aura:if>
+									</p>
+								</div>
+							</div>
+						</header>
+						<div class="slds-post__content slds-text-longform">
+							<p class="slds-text-title--caps">
+								<lightning:formattedText value="{! boatReview.Name }" />
+							</p>
+							<p>
+								<lightning:formattedRichText value="{! boatReview.Comment__c }" />
+							</p>
+							<p>
+								<c:FiveStarRating value="{! boatReview.Rating__c }" readonly="TRUE" />
+							</p>
+						</div>
+					</li>
+				</aura:iteration>
+			</ul>
+			<aura:set attribute="else">
+				<div class="slds-align_absolute-center">
+					No reviews available
+				</div>
+			</aura:set>
+		</aura:if>
+	</ui:scrollerWrapper>
+</aura:component>

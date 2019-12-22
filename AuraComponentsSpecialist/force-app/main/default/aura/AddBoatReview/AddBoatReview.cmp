@@ -1,0 +1,37 @@
+<aura:component>
+	<aura:handler name="init" value="{! this }" action="{! c.doInit }" />
+
+	<aura:registerEvent name="boatReviewAdded" type="c:BoatReviewAdded" />
+
+	<aura:attribute name="boat" type="Boat__c" />
+	<aura:attribute name="boatReview" type="BoatReview__c" access="PRIVATE" />
+	<aura:attribute name="recordError" type="String" access="PRIVATE" />
+
+	<force:recordData
+		aura:id="service"
+		fields="Boat__c,Comment__c,Name,Rating__c"
+		targetFields="{! v.boatReview }"
+		recordUpdated="{! c.onRecordUpdated }"
+		targetError="{! v.recordError }"
+	/>
+
+	<lightning:layout multipleRows="TRUE">
+		<lightning:layoutItem size="12" padding="around-small">
+			<lightning:input name="title" label="Title" value="{! v.boatReview.Name }" variant="label-stacked" />
+		</lightning:layoutItem>
+		<lightning:layoutItem size="12" padding="around-small">
+			<lightning:inputRichText label="Description" labelVisible="TRUE" variant="label-stacked" value="{! v.boatReview.Comment__c }" placeholder="Comment" disabledCategories="FORMAT_FONT" />
+		</lightning:layoutItem>
+		<lightning:layoutItem size="12" padding="around-small">
+			<c:FiveStarRating value="{! v.boatReview.Rating__c }" />
+		</lightning:layoutItem>
+		<lightning:layoutItem size="12" padding="around-small" class="slds-align_absolute-center">
+			<lightning:button iconName="utility:save" label="Submit" onclick="{! c.onSave }" />
+		</lightning:layoutItem>
+		<aura:if isTrue="{! not(empty(v.recordError)) }">
+			<lightning:layoutItem size="12" padding="around-small">
+				<div>{! v.recordError }</div>
+			</lightning:layoutItem>
+		</aura:if>
+	</lightning:layout>
+</aura:component>
