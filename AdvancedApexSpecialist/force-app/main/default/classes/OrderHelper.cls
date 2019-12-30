@@ -1,4 +1,4 @@
-public with sharing class OrderHelper {
+public class OrderHelper {
 
     /**
      * @name AfterUpdate
@@ -10,10 +10,11 @@ public with sharing class OrderHelper {
     public static void AfterUpdate(List<Order> newList, List<Order> oldList){
         Set<Id> orderIds = new Set<Id>();
         for ( Integer i=0; i<newList.size(); i++ ){
-            if ( newList[i].Status == 'Activation' && oldList[i].Status != 'Activate' ){
+            if ( newList[i].Status == Constants.ACTIVATED_ORDER_STATUS && oldList[i].Status != Constants.ACTIVATED_ORDER_STATUS ){
                 orderIds.add(newList[i].Id);
             }
         }
+		RollUpOrderItems(orderIds);
     }
 
     /**
@@ -23,15 +24,25 @@ public with sharing class OrderHelper {
      * @return void
     **/
     public static void RollUpOrderItems(Set<Id> activatedOrderIds){
-        //ToDo: Declare a Map named "productMap" of Ids to Product2 records
+    	//ToDo: Declare a Map named "productMap" of Ids to Product2 records
+		Map<Id,Product2> productMap = new Map<Id,Product2>();
+		List<Id> productIds = new List<Id>();
 
         //ToDo: Loop through a query of OrderItems related to the activatedOrderIds
+		for (OrderItem oi : [SELECT Id, Product2Id, Quantity FROM OrderItem WHERE OrderID IN :activatedOrderIds]) {
+			productIds.add(oi.Product2Id);
+		}
 
-            //ToDo: Populate the map with the Id of the related Product2 as the key and Product2 record as the value
+		//ToDo: Populate the map with the Id of the related Product2 as the key and Product2 record as the value
+		productMap = new Map<Id, Product2>([SELECT Id, Quantity_Ordered__c FROM Product2 WHERE Id IN :productIds]);
 
         //ToDo: Loop through a query that aggregates the OrderItems related to the Products in the ProductMap keyset
+		List<AggregateResult> aggResults = [SELECT Product2Id, SUM(Quantity)totalQuantity from OrderItem WHERE Product2Id IN :productMap.keySet() GROUP BY product2Id];
 
         //ToDo: Perform an update on the records in the productMap
+		for (AggregateResult result : aggResults) {
+			productMap.get((String)result.get('Product2Id')).Quantity_Ordered__c = Integer.valueOf(result.get('totalQuantity'));
+		}
+		update productMap.values();
     }
-
 }
