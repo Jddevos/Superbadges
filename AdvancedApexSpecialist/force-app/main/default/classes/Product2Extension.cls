@@ -52,8 +52,8 @@ public class Product2Extension {
 				System.debug(curPBE);
 
 				if (curPRD.Id != null) {
-					curPBE.Pricebook2Id = Constants.STANDARD_PRICEBOOK_ID;	// Connect PBE to standard pricebook
 					curPBE.Product2Id = curPRD.Id;	// Connect PBE to product
+					curPBE.Pricebook2Id = Constants.STANDARD_PRICEBOOK_ID;	// Connect PBE to standard pricebook
 					curPBE.IsActive = true;	// Set PBE to ACTIVE
 					pbesToInsert.add(curPBE);
 				}
