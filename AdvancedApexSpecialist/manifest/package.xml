@@ -22,6 +22,10 @@
 		<name>CustomLabels</name>
 	</types>
 	<types>
+		<members>*</members>
+		<name>CustomMetadata</name>
+	</types>
+	<types>
 		<members>Account</members>
 		<members>Inventory_Setting__mdt</members>
 		<members>Order</members>

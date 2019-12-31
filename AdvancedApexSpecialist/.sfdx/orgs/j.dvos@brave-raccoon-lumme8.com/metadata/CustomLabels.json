@@ -1,0 +1,16 @@
+{
+  "status": 0,
+  "result": {
+    "createdById": "0056g000002P1CGAA0",
+    "createdByName": "Jeramy De Vos",
+    "createdDate": "1970-01-01T00:00:00.000Z",
+    "fileName": "labels/CustomLabels.labels",
+    "fullName": "CustomLabels",
+    "id": "",
+    "lastModifiedById": "0056g000002P1CGAA0",
+    "lastModifiedByName": "Jeramy De Vos",
+    "lastModifiedDate": "1970-01-01T00:00:00.000Z",
+    "namespacePrefix": "",
+    "type": "CustomLabels"
+  }
+}

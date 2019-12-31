@@ -4,4 +4,9 @@
     <availableInTouch>false</availableInTouch>
     <confirmationTokenRequired>false</confirmationTokenRequired>
     <label>Product2New</label>
+    <packageVersions>
+        <majorNumber>1</majorNumber>
+        <minorNumber>11</minorNumber>
+        <namespace>th_con_app</namespace>
+    </packageVersions>
 </ApexPage>

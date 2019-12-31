@@ -37,10 +37,8 @@ public class OrderHelper {
 		productMap = new Map<Id, Product2>([SELECT Id, Quantity_Ordered__c FROM Product2 WHERE Id IN :productIds]);
 
         //ToDo: Loop through a query that aggregates the OrderItems related to the Products in the ProductMap keyset
-		List<AggregateResult> aggResults = [SELECT Product2Id, SUM(Quantity)totalQuantity from OrderItem WHERE Product2Id IN :productMap.keySet() GROUP BY product2Id];
-
-        //ToDo: Perform an update on the records in the productMap
-		for (AggregateResult result : aggResults) {
+		for (AggregateResult result : [SELECT Product2Id, SUM(Quantity)totalQuantity from OrderItem WHERE Product2Id IN :productMap.keySet() GROUP BY product2Id]) {
+        	//ToDo: Perform an update on the records in the productMap
 			productMap.get((String)result.get('Product2Id')).Quantity_Ordered__c = Integer.valueOf(result.get('totalQuantity'));
 		}
 		update productMap.values();
