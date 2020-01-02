@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+    <testsuite name="force.apex" timestamp="2020-01-02T08:08:51-06:00" hostname="https://brave-raccoon-lumme8-dev-ed.my.salesforce.com" tests="1" failures="1"  errors="0"  time="0">
+        <properties>
+            <property name="outcome" value="Failed"/>
+            <property name="testsRan" value="1"/>
+            <property name="passing" value="0"/>
+            <property name="failing" value="1"/>
+            <property name="skipped" value="0"/>
+            <property name="passRate" value="0%"/>
+            <property name="failRate" value="100%"/>
+            <property name="testStartTime" value="Jan 2, 2020 8:08 AM"/>
+            <property name="testExecutionTime" value="0 s"/>
+            <property name="testTotalTime" value="NaN s"/>
+            <property name="commandTime" value="7.32 s"/>
+            <property name="hostname" value="https://brave-raccoon-lumme8-dev-ed.my.salesforce.com"/>
+            <property name="orgId" value="00D6g00000364k5EAA"/>
+            <property name="username" value="j.dvos@brave-raccoon-lumme8.com"/>
+            <property name="testRunId" value="7076g000009mlA3"/>
+            <property name="userId" value="0056g000002P1CGAA0"/>
+            <property name="testRunCoverage" value="NaN%"/>
+            <property name="orgWideCoverage" value="0%"/>
+        </properties>
+        <testcase name="<compile>" classname="Product2Tests" time="0">
+            <failure message="line 10, column 37: Constructor not defined: [Product2Extension].&lt;Constructor&gt;()"></failure>
+        </testcase>
+    </testsuite>
+</testsuites>

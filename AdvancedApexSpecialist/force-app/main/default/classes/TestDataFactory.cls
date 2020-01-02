@@ -186,8 +186,12 @@ public with sharing class TestDataFactory {
 	public static void InsertTestData(Integer cnt){
 		//ToDo: Ensure this method calls each of the construct methods
 		//  and inserts the results for use as test data.
-
+		
 		System.debug(cnt);
+
+		if (Test.isRunningTest()) {
+			RemoveTestData();
+		}
 
 		CollaborationGroup cg = ConstructCollaborationGroup();
 		insert cg;
@@ -215,5 +219,11 @@ public with sharing class TestDataFactory {
 		delete [SELECT Id FROM Account WHERE Name LIKE 'Test Account %'];
 		delete [SELECT Id FROM PricebookEntry WHERE UnitPrice = 100 AND IsActive = true AND Pricebook2Id = :Constants.STANDARD_PRICEBOOK_ID];
 		delete [SELECT Id FROM Product2 WHERE Name LIKE 'Test Product %'];
+	}
+
+	
+
+	public static void VerifyQuantityOrdered(Product2 originalProduct, Product2 updatedProduct, Integer qtyOrdered) {
+		System.assertEquals(updatedProduct.Quantity_Ordered__c, originalProduct.Quantity_Ordered__c + qtyOrdered);
 	}
 }

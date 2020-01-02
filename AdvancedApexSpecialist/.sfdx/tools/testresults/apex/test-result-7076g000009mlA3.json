@@ -1,0 +1,58 @@
+{
+    "summary": {
+        "outcome": "Failed",
+        "testsRan": 1,
+        "passing": 0,
+        "failing": 1,
+        "skipped": 0,
+        "passRate": "0%",
+        "failRate": "100%",
+        "testStartTime": "Jan 2, 2020 8:08 AM",
+        "testExecutionTime": "0 ms",
+        "testTotalTime": "null ms",
+        "commandTime": "7319 ms",
+        "hostname": "https://brave-raccoon-lumme8-dev-ed.my.salesforce.com",
+        "orgId": "00D6g00000364k5EAA",
+        "username": "j.dvos@brave-raccoon-lumme8.com",
+        "testRunId": "7076g000009mlA3",
+        "userId": "0056g000002P1CGAA0",
+        "testRunCoverage": "NaN%",
+        "orgWideCoverage": "0%"
+    },
+    "tests": [
+        {
+            "attributes": {
+                "type": "ApexTestResult",
+                "url": "/services/data/v47.0/tooling/sobjects/ApexTestResult/07M6g0000005PVuEAM"
+            },
+            "Id": "07M6g0000005PVuEAM",
+            "QueueItemId": "7096g000000YsYpAAK",
+            "StackTrace": null,
+            "Message": "line 10, column 37: Constructor not defined: [Product2Extension].<Constructor>()",
+            "AsyncApexJobId": "7076g000009mlA3AAI",
+            "MethodName": "<compile>",
+            "Outcome": "CompileFail",
+            "ApexClass": {
+                "attributes": {
+                    "type": "ApexClass",
+                    "url": "/services/data/v47.0/tooling/sobjects/ApexClass/01p6g00000BpFCeAAN"
+                },
+                "Id": "01p6g00000BpFCeAAN",
+                "Name": "Product2Tests",
+                "NamespacePrefix": null
+            },
+            "RunTime": null,
+            "FullName": "Product2Tests.<compile>"
+        }
+    ],
+    "coverage": {
+        "coverage": [],
+        "records": [],
+        "summary": {
+            "totalLines": 0,
+            "coveredLines": 0,
+            "testRunCoverage": "NaN%",
+            "orgWideCoverage": "0%"
+        }
+    }
+}

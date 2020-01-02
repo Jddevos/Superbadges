@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+    <testsuite name="force.apex" timestamp="2020-01-02T13:35:20-06:00" hostname="https://brave-raccoon-lumme8-dev-ed.my.salesforce.com" tests="3" failures="0"  errors="0"  time="5.92">
+        <properties>
+            <property name="outcome" value="Passed"/>
+            <property name="testsRan" value="3"/>
+            <property name="passing" value="3"/>
+            <property name="failing" value="0"/>
+            <property name="skipped" value="0"/>
+            <property name="passRate" value="100%"/>
+            <property name="failRate" value="0%"/>
+            <property name="testStartTime" value="Jan 2, 2020 1:35 PM"/>
+            <property name="testExecutionTime" value="5.92 s"/>
+            <property name="testTotalTime" value="5.92 s"/>
+            <property name="commandTime" value="16.2 s"/>
+            <property name="hostname" value="https://brave-raccoon-lumme8-dev-ed.my.salesforce.com"/>
+            <property name="orgId" value="00D6g00000364k5EAA"/>
+            <property name="username" value="j.dvos@brave-raccoon-lumme8.com"/>
+            <property name="testRunId" value="7076g000009n2y6"/>
+            <property name="userId" value="0056g000002P1CGAA0"/>
+            <property name="testRunCoverage" value="92%"/>
+            <property name="orgWideCoverage" value="77%"/>
+        </properties>
+        <testcase name="OrderUpdate_UnitTest" classname="OrderTests" time="1.58">
+        </testcase>
+        <testcase name="Product2Extension_UnitTest" classname="Product2Tests" time="0.12">
+        </testcase>
+        <testcase name="Product2Trigger_UnitTest" classname="Product2Tests" time="4.22">
+        </testcase>
+    </testsuite>
+</testsuites>
