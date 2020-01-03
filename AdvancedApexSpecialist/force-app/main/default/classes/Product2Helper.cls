@@ -68,6 +68,7 @@ public class Product2Helper {
 			announcement.expirationDate = System.today() + 1;
 			announcement.sendEmails = false;
 			announcement.body = messageBody;
+			announcement.parentId = COLLABORATION_GROUP[0].Id;
 
 			toPost.add(announcement);
 		}

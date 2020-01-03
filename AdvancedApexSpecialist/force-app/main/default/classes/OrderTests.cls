@@ -23,6 +23,24 @@ private class OrderTests {
 
 	@isTest
 	private static void OrderExtension_UnitTest() {
+		PageReference pageRef = Page.OrderEdit;
+		Test.setCurrentPage(pageRef);
 
+		ApexPages.StandardController controller = new ApexPages.StandardController([SELECT Id FROM Order LIMIT 1]);
+		OrderExtension ext = new OrderExtension(controller);
+
+		Integer dummy = 0;
+		dummy = ext.GetTotalPages();
+		dummy = ext.GetPageNumber();
+		ext.OnFieldChange();
+		ext.SelectFamily();
+		ext.Next();
+		ext.Previous();
+		ext.Last();
+		ext.First();
+		ext.GetHasNext();
+		ext.GetHasPrevious();
+		ext.GetFamilyOptions();
+		ext.Save();
 	}
 }

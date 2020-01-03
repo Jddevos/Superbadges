@@ -3,27 +3,27 @@ FORMAT  FILE
 ──────  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 txt     c:\Users\jdevos\OneDrive\Git\Superbadges\AdvancedApexSpecialist\.sfdx\tools\testresults\apex\test-result.txt
 txt     c:\Users\jdevos\OneDrive\Git\Superbadges\AdvancedApexSpecialist\.sfdx\tools\testresults\apex\test-run-id.txt
-junit   c:\Users\jdevos\OneDrive\Git\Superbadges\AdvancedApexSpecialist\.sfdx\tools\testresults\apex\test-result-7076g000009n3Xg-junit.xml
-json    c:\Users\jdevos\OneDrive\Git\Superbadges\AdvancedApexSpecialist\.sfdx\tools\testresults\apex\test-result-7076g000009n3Xg.json
+junit   c:\Users\jdevos\OneDrive\Git\Superbadges\AdvancedApexSpecialist\.sfdx\tools\testresults\apex\test-result-7076g000009o4Sr-junit.xml
+json    c:\Users\jdevos\OneDrive\Git\Superbadges\AdvancedApexSpecialist\.sfdx\tools\testresults\apex\test-result-7076g000009o4Sr.json
 json    c:\Users\jdevos\OneDrive\Git\Superbadges\AdvancedApexSpecialist\.sfdx\tools\testresults\apex\test-result-codecoverage.json
 
 === Apex Code Coverage
-ID                  NAME                   % COVERED            UNCOVERED LINES
-──────────────────  ─────────────────────  ───────────────────  ───────────────
-01p6g00000BpFCfAAN  TestDataFactory        100%
-01p6g00000BpHU1AAN  Constants              100%
-01p6g00000BpFCdAAN  Product2Helper         100%
-01q6g000000EOiWAAW  orderTrigger           100%
-01p6g00000BpFCWAA3  AnnouncementQueueable  58.333333333333336%  21,22,28,29,32
-01q6g000000EOiXAAW  product2Trigger        100%
-01p6g00000BpFCZAA3  OrderHelper            100%
-01p6g00000BpFCcAAN  Product2Extension      94%                  70,71,73
-01p6g00000BpFCXAA3  ChartHelper            100%
+ID                  NAME               % COVERED            UNCOVERED LINES
+──────────────────  ─────────────────  ───────────────────  ─────────────────────────────────────────────────────
+01p6g00000BpFCXAA3  ChartHelper        100%
+01p6g00000BpHU1AAN  Constants          100%
+01p6g00000BpFCfAAN  TestDataFactory    97.75280898876404%   226,227
+01p6g00000BpFCZAA3  OrderHelper        80%                  14,33,42
+01q6g000000EOiWAAW  orderTrigger       100%
+01p6g00000BpFCYAA3  OrderExtension     89.2156862745098%    56,127,137,141,153,154,157,220,221,228,229
+01p6g00000BpFCcAAN  Product2Extension  94%                  70,71,73
+01q6g000000EOiXAAW  product2Trigger    100%
+01p6g00000BpFCdAAN  Product2Helper     35.714285714285715%  39,44,52,53,54,60,61,63,64,65,67,68,69,70,72,76,77,78
 
 === Test Results
-TEST NAME                        OUTCOME  MESSAGE  RUNTIME (MS)
-───────────────────────────────  ───────  ───────  ────────────
-OrderTests.OrderUpdate_UnitTest  Pass              169
+TEST NAME                           OUTCOME  MESSAGE  RUNTIME (MS)
+──────────────────────────────────  ───────  ───────  ────────────
+OrderTests.OrderExtension_UnitTest  Pass              194
 
 === Test Summary
 NAME                 VALUE
@@ -35,15 +35,15 @@ Failing              0
 Skipped              0
 Pass Rate            100%
 Fail Rate            0%
-Test Start Time      Jan 2, 2020 1:46 PM
-Test Execution Time  169 ms
-Test Total Time      169 ms
-Command Time         3607 ms
+Test Start Time      Jan 3, 2020 10:27 AM
+Test Execution Time  194 ms
+Test Total Time      194 ms
+Command Time         3748 ms
 Hostname             https://brave-raccoon-lumme8-dev-ed.my.salesforce.com
 Org Id               00D6g00000364k5EAA
 Username             j.dvos@brave-raccoon-lumme8.com
-Test Run Id          7076g000009n3Xg
+Test Run Id          7076g000009o4Sr
 User Id              0056g000002P1CGAA0
-Test Run Coverage    96%
-Org Wide Coverage    84%
+Test Run Coverage    87%
+Org Wide Coverage    94%
 

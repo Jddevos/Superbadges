@@ -18,7 +18,7 @@ public with sharing class TestDataFactory {
 		cg.Name = 'TEST' + Constants.INVENTORY_ANNOUNCEMENTS;
 		cg.CollaborationType = 'Public';
 
-		// System.debug(cg);
+		System.debug(cg);
 		return cg;
 	}
 
@@ -35,18 +35,19 @@ public with sharing class TestDataFactory {
 
 		List<Product2> products = new List<Product2>();
 
-		for (Integer i=1; i<=cnt; i++) {
+		for (Integer i=0; i<cnt; i++) {
 			Product2 p = new Product2();
-			p.Name = 'Test Product ' +i;
+			p.Name = 'Test_Product_' +i;
 			p.IsActive = true;
 			p.Initial_Inventory__c = 10;
-			p.Family = Constants.PRODUCT_FAMILY[Math.mod(i,Constants.PRODUCT_FAMILY.size())].getValue();
+			p.Family = Constants.PRODUCT_FAMILY.get(Math.mod(i,Constants.PRODUCT_FAMILY.size())).getValue();
 			
+			System.debug(p);
 			products.add(p);
 		}
 
-		// System.debug('products size: ' +products.size());
-		// System.debug(products);
+		System.debug('products size: ' +products.size());
+		System.debug(products);
 		return products;
 	}
 
@@ -70,11 +71,12 @@ public with sharing class TestDataFactory {
 			pbe.IsActive = true;
 			pbe.Pricebook2Id = Constants.STANDARD_PRICEBOOK_ID;
 
+			System.debug(pbe);
 			pricebookEntries.add(pbe);
 		}
 
-		// System.debug('pricebookEntries size: ' +pricebookEntries.size());
-		// system.debug(pricebookEntries);
+		System.debug('pricebookEntries size: ' +pricebookEntries.size());
+		system.debug(pricebookEntries);
 		return pricebookEntries;
 	}
 
@@ -88,15 +90,16 @@ public with sharing class TestDataFactory {
 		
 		List<Account> accounts = new List<Account>();
 
-		for (Integer i=1; i<=cnt; i++) {
+		for (Integer i=0; i<cnt; i++) {
 			Account a = new Account();
-			a.Name = 'Test Account '+i;
+			a.Name = 'Test_Account_'+i;
 
+			System.debug(a);
 			accounts.add(a);
 		}
 
-		// System.debug('accounts size: ' +accounts.size());
-		// System.debug(accounts);
+		System.debug('accounts size: ' +accounts.size());
+		System.debug(accounts);
 		return accounts;
 	}
 
@@ -111,16 +114,17 @@ public with sharing class TestDataFactory {
 		
 		List<Contact> contacts = new List<Contact>();
 
-		for (Integer i=1; i<=cnt; i++) {
+		for (Integer i=0; i<cnt; i++) {
 			Contact c = new Contact();
-			c.LastName = 'Test Contact '+i;
-			c.AccountId = accts[Math.mod(i,accts.size())].Id;
+			c.LastName = 'Test_Contact_'+i;
+			c.AccountId = accts.get(Math.mod(i,accts.size())).Id;
 
+			System.debug(c);
 			contacts.add(c);
 		}
 
-		// System.debug('contacts size: ' +contacts.size());
-		// System.debug(contacts);
+		System.debug('contacts size: ' +contacts.size());
+		System.debug(contacts);
 		return contacts;
 	}
 
@@ -135,19 +139,20 @@ public with sharing class TestDataFactory {
 		
 		List<Order> orders = new List<Order>();
 
-		for (Integer i=1; i<=cnt; i++) {
+		for (Integer i=0; i<cnt; i++) {
 			Order o = new Order();
-			o.Name = 'Test Order ' +i;
+			o.Name = 'Test_Order_' +i;
 			o.AccountId = accts[Math.mod(i,accts.size())].Id;
 			o.Pricebook2Id = Constants.STANDARD_PRICEBOOK_ID;
 			o.Status = Constants.DRAFT_ORDER_STATUS;
 			o.EffectiveDate = System.today();
 
+			System.debug(o);
 			orders.add(o);
 		}
 
-		// System.debug('orders size: ' +orders.size());
-		// system.debug(orders);
+		System.debug('orders size: ' +orders.size());
+		system.debug(orders);
 		return orders;
 	}
 
@@ -164,18 +169,19 @@ public with sharing class TestDataFactory {
 
 		List<OrderItem> orderItems = new List<OrderItem>();
 
-		for (Integer i=1; i<=cnt; i++) {
+		for (Integer i=0; i<cnt; i++) {
 			OrderItem oi = new OrderItem();
 			oi.Quantity = Constants.DEFAULT_ROWS;
 			oi.UnitPrice = 100;
 			oi.PricebookEntryId = pbes[Math.mod(i,pbes.size())].Id;
-			oi.OrderId = ords[Math.mod(i,ords.size())].Id;
+			oi.OrderId = ords.get(Math.mod(i,ords.size())).Id;
 
+			System.debug(oi);
 			orderItems.add(oi);
 		}
 
-		// System.debug('orderItems size: ' +orderItems.size());
-		// system.debug(orderItems);
+		System.debug('orderItems size: ' +orderItems.size());
+		system.debug(orderItems);
 		return orderItems;
 	}
 
@@ -214,16 +220,14 @@ public with sharing class TestDataFactory {
 		delete [SELECT Id FROM CollaborationGroup WHERE Name = :groupName];
 
 		delete [SELECT Id FROM OrderItem WHERE UnitPrice = 100 AND Quantity = :Constants.DEFAULT_ROWS ];
-		delete [SELECT Id FROM Order WHERE Name LIKE 'Test Order %'];
-		delete [SELECT Id FROM Contact WHERE LastName LIKE 'Test Contact %'];
-		delete [SELECT Id FROM Account WHERE Name LIKE 'Test Account %'];
+		delete [SELECT Id FROM Order WHERE Name LIKE 'Test_Order_%'];
+		delete [SELECT Id FROM Contact WHERE LastName LIKE 'Test_Contact_%'];
+		delete [SELECT Id FROM Account WHERE Name LIKE 'Test_Account_%'];
 		delete [SELECT Id FROM PricebookEntry WHERE UnitPrice = 100 AND IsActive = true AND Pricebook2Id = :Constants.STANDARD_PRICEBOOK_ID];
-		delete [SELECT Id FROM Product2 WHERE Name LIKE 'Test Product %'];
+		delete [SELECT Id FROM Product2 WHERE Name LIKE 'Test_Product_%'];
 	}
 
-	
-
 	public static void VerifyQuantityOrdered(Product2 originalProduct, Product2 updatedProduct, Integer qtyOrdered) {
-		System.assertEquals(updatedProduct.Quantity_Ordered__c, originalProduct.Quantity_Ordered__c + qtyOrdered);
+		System.assertEquals(updatedProduct.Quantity_Ordered__c - originalProduct.Quantity_Ordered__c, qtyOrdered);
 	}
 }

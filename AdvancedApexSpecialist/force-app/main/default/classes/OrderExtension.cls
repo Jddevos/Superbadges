@@ -81,8 +81,6 @@ public class OrderExtension {
 				orderItemMap.put(pbe.Product2Id, oi);
 			}
 		}
-
-		
 	}
 
 
@@ -142,20 +140,18 @@ public class OrderExtension {
 				}
 			}
 			
-			System.debug(itemsToUpsert);
-			System.debug(itemsToDelete);
+			// System.debug(itemsToUpsert);
+			// System.debug(itemsToDelete);
 
-			System.debug('0');
 			upsert itemsToUpsert;
-			System.debug('1');
 			delete itemsToDelete;
-			System.debug('2');
 		} catch (Exception e) {
 			apexPages.addMessage(new ApexPages.message(ApexPages.Severity.ERROR,Constants.ERROR_MESSAGE));
 			System.debug('Something went wrong while inserting. Rolling back.');
 			System.debug(e);
 			Database.rollback(sp);
 		}
+		loadPieChart();
 	}
 
 
